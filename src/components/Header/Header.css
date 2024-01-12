@@ -1,0 +1,43 @@
+@media screen and (max-width: 767px) {
+    .header {
+        background: #fff;
+        margin: 0 auto;
+        display: flex;
+        padding: 6%;
+        justify-content: space-between;
+        gap: 30px;
+        background: #fff;
+    }
+
+    .header h1 {
+        font-size: 14px;
+        font-weight: 800;
+        display: flex;
+        align-items: center;
+    }
+
+    .headerRight {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .moon {
+        width: 16px;
+        height: 16px;
+    }
+
+    .header h3 {
+        font-size: 12px;
+        display: flex;
+        align-items: center;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+    
+}
+
+@media screen and (min-width: 1024px) {
+    
+}
