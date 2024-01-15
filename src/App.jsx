@@ -10,8 +10,10 @@ function App() {
   return (
     <div>
       <Header />
-      <SearchBar />
-      <Filter />
+      <div className="container">
+        <SearchBar />
+        <Filter />
+      </div>
       <Card />
     </div>
   )
