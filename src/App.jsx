@@ -11,7 +11,7 @@ function App() {
   const { isDarkMode, toggleTheme } = useTheme()
 
   return (
-    <div className='appBody'>
+    <div className={`appBody ${isDarkMode ? 'dark-mode' : 'light-mode'}`}>
       <Header handleTheme={toggleTheme}/>
       <div className="container">
         <SearchBar />
