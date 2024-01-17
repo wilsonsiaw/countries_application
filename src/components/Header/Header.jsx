@@ -10,10 +10,12 @@ const Header = ( {handleTheme} ) => {
 
   return (
     <header className={`header ${isDarkMode ? 'dark-mode' : 'light-mode'}`}>
-      <h1>Where in the world?</h1>
-      <div className="headerRight" onClick={handleTheme}>
-          {isDarkMode ? <IoSunnyOutline className='moon'/> : <BsMoon className='moon'/> }
-          <h3>{isDarkMode ? 'Light Mode' : 'Dark Mode'}</h3>
+      <div className="headerContent">
+        <h1>Where in the world?</h1>
+        <div className="headerRight" onClick={handleTheme}>
+            {isDarkMode ? <IoSunnyOutline className='moon'/> : <BsMoon className='moon'/> }
+            <h3>{isDarkMode ? 'Light Mode' : 'Dark Mode'}</h3>
+        </div>
       </div>
     </header>
   )
