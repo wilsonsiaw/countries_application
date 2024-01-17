@@ -5,31 +5,62 @@
     font-family: "Nunito Sans", sans-serif;
 }
 
+body, html {
+    height: 100%;
+    background: #FAFAFA;
+}
+
 .appBody {
     background: #FAFAFA;
-    height: 100vh;
 }
 
 /* set dark mode styles */
 .appBody.dark-mode {
     background: #202C36;
+    height: 100%;
 }
 
 @media screen and (min-width: 768px) and (max-width: 1023px) {
     .container {
+        max-width: 1440px;
         display: flex;
         justify-content: space-between;
         align-items: center;
         margin-top: 5%;
     }
+
+    .cardContainer {
+        display: flex;
+        justify-content: space-between; 
+        align-items: center;
+        flex-wrap: wrap;
+        max-width: 1023px;
+        padding: 20px;
+        margin-right: 30px;
+        margin-left: 31px;
+    }
 }
 
 @media screen and (min-width: 1024px) {
     .container {
+        max-width: 1440px;
         display: flex;
         justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 20px;
         align-items: center;
+        margin: 0 auto;
         margin-top: 2%;
+    }
+
+    .cardContainer {
+        display: flex;
+        justify-content: space-between; 
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 20px;
+        max-width: 1440px;
+        margin: 0 auto;
     }
 }
 
