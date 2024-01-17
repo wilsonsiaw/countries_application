@@ -34,6 +34,13 @@
         display: flex;
         align-items: center;
     }
+
+    /* dark mode style rules */
+    .header.dark-mode {
+        background: #2B3844;
+        box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.06);
+        color: #fff;
+    }
 }
 
 @media screen and (min-width: 768px) and (max-width: 1023px) {
@@ -72,6 +79,13 @@
         display: flex;
         align-items: center;
     }
+
+    /* dark mode style rules */
+    .header.dark-mode {
+        background: #2B3844;
+        box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.06);
+        color: #fff;
+    }
 }
 
 @media screen and (min-width: 1024px) {
@@ -109,5 +123,12 @@
         font-size: 16px;
         display: flex;
         align-items: center;
+    }
+
+    /* dark mode style rules */
+    .header.dark-mode {
+        background: #2B3844;
+        box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.06);
+        color: #fff;
     }
 }
