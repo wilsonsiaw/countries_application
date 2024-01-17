@@ -24,6 +24,17 @@
     span {
         font-weight: 300;
     }
+
+    /* dark mode style rules */
+    .main.dark-mode {
+        background: #2B3844;
+        box-shadow: 0px 0px 7px 2px rgba(0, 0, 0, 0.03);
+    }
+
+    .main.dark-mode h3,
+    .main.dark-mode h5 {
+        color: #fff;
+    }
 }
 
 @media screen and (min-width: 768px) and (max-width: 1023px) {
@@ -52,6 +63,17 @@
     span {
         font-weight: 300;
     }
+
+    /* dark mode style rules */
+    .main.dark-mode {
+        background: #2B3844;
+        box-shadow: 0px 0px 7px 2px rgba(0, 0, 0, 0.03);
+    }
+
+    .main.dark-mode h3,
+    .main.dark-mode h5 {
+        color: #fff;
+    }
 }
 
 @media screen and (min-width: 1024px) {
@@ -79,5 +101,16 @@
 
     span {
         font-weight: 300;
+    }
+
+    /* dark mode style rules */
+    .main.dark-mode {
+        background: #2B3844;
+        box-shadow: 0px 0px 7px 2px rgba(0, 0, 0, 0.03);
+    }
+
+    .main.dark-mode h3,
+    .main.dark-mode h5 {
+        color: #fff;
     }
 }
