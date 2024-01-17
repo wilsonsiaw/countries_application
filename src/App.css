@@ -10,6 +10,11 @@
     height: 100vh;
 }
 
+/* set dark mode styles */
+.appBody.dark-mode {
+    background: #202C36;
+}
+
 @media screen and (min-width: 768px) and (max-width: 1023px) {
     .container {
         display: flex;
