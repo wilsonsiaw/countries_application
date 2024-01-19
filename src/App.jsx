@@ -16,26 +16,39 @@ function App() {
   // create state to work with data from the API
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
-  // const [error, setError] = useState(null);
+  const [filteredCountries, setFilteredCountries] = useState([]);
+  const [searchCountry, setSearchCountry] = useState('')
 
-  useEffect(() => {
-    const getData = async () => {
+    const getCountryData = async () => {
       try {
         setLoading(true)
-        const reponse = await axios.get('https://restcountries.com/v3.1/all')
-        setData(reponse.data);
+        const response = await axios.get('https://restcountries.com/v3.1/all')
+        setData(response.data);
+        setFilteredCountries(response.data)
       } catch (error) {
         console.error("Error fetching data:", error)
       } finally {
         setLoading(false)
       }
     };
-    getData();
-  }, []);
 
+    useEffect(() => {
+      getCountryData()
+    }, []);
+
+    const handleSearch = () => {
+      if (searchCountry.trim() === '') {
+        setFilteredCountries(data);
+      } else {
+        const filtered = data.filter((country) => 
+        country.name.common.toLowerCase().includes(searchCountry.toLowerCase())
+        );
+        setFilteredCountries(filtered);
+      }
+    }
   // console.log(data)
 
-  const cardData = data.map(country => (
+  const cardData = filteredCountries.map(country => (
     <Card
       key={country.cca3} 
       flag={country.flags.png}
@@ -50,7 +63,11 @@ function App() {
     <div className={`appBody ${isDarkMode ? 'dark-mode' : 'light-mode'}`}>
       <Header handleTheme={toggleTheme}/>
       <div className="container">
-        <SearchBar />
+        <SearchBar 
+          searchCountry={searchCountry}
+          setSearchCountry={setSearchCountry}
+          handleSearch={handleSearch}
+        />
         <Filter />
       </div>
       <div />
