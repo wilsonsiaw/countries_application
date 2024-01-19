@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './Filter.css'
 import { useTheme } from '../context/ThemeContextProvider'
 
@@ -8,7 +8,7 @@ const Filter = () => {
 
   return (
     <select className={`regions ${isDarkMode ? 'dark-mode' : 'light-mode'}`}>
-        <option value="" disabled selected>Filter by Region</option>
+        <option value="">Filter by Region</option>
         <option value="africa">Africa</option>
         <option value="america">America</option>
         <option value="asia">Asia</option>
