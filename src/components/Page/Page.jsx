@@ -10,12 +10,12 @@ const Page = () => {
     const{ isDarkMode, toggleTheme } = useTheme()
 
   return (
-    <main className={isDarkMode ? 'dark-mode': 'light-mode'}>
+    <main className={`pageBody ${isDarkMode ? 'dark-mode' : 'light-mode'}`}>
         <Header handleTheme={toggleTheme}/>
         <section>
             <div className={`back ${isDarkMode ? 'dark-mode' : 'light-mode'}`}>
                 <div className={`backContent ${isDarkMode ? 'dark-mode' : 'light-mode'}`}>
-                    <FaArrowLeftLong />
+                    <FaArrowLeftLong className={`backArrow ${isDarkMode} ? dark-mode : light-mode`}/>
                     <h5>Back</h5>
                 </div>
             </div>
