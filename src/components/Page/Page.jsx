@@ -35,6 +35,8 @@ const Page = () => {
         console.log(id)
         getDetailedData();
     }, [id])
+
+    console.log(cardDetailData)
     
     // The rendering logic for the component
     return (
@@ -66,7 +68,15 @@ const Page = () => {
                         </div>
                         <div className='info2'>
                             <h5>Top Level Domain: <span>{country?.tld[0]}</span></h5>
-                            <h5>Currency: <span>{Object.keys(country?.currencies)}</span></h5>
+                            <h5>Currency: 
+                                {
+                                    Object.keys(country?.currencies).map(currency => (
+                                        <span className='currency'>
+                                            {country?.currencies[currency]?.name}
+                                        </span>
+                                    ))
+                                }
+                            </h5>
                             <h5>Languages: <span>{Object.values(country?.languages).join(", ")}</span></h5>
                         </div>
                     </div>
