@@ -35,7 +35,8 @@ const Home = () => {
     }, []);
 
 
-    // create a function that searches through the cards
+    // create a function for the search functionality of 
+    // the application
     const handleSearch = (countryName) => {
       const trimmedSearch = countryName.trim();
       if (trimmedSearch === '') {
@@ -45,6 +46,18 @@ const Home = () => {
           country.name.common.toLowerCase().includes(trimmedSearch.toLowerCase())
         );
         setFilteredCountries(filtered)
+      }
+    }
+
+    // create a function to handle the filtering with the
+    // select input
+    const handleRegionSelection = (selectedRegion) => {
+      if (selectedRegion === '') {
+        setFilteredCountries(data)
+      } else {
+        const filtered = data.filter((country) => 
+          country.region.toLowerCase() === selectedRegion.toLowerCase());
+          setFilteredCountries(filtered);
       }
     }
 
@@ -70,7 +83,7 @@ const Home = () => {
           setSearchCountry={setSearchCountry}
           handleSearch={handleSearch}
         />
-        <Filter />
+        <Filter onFilterChange={handleRegionSelection}/>
       </div>
       <div />
       <div className="cardContainer">
