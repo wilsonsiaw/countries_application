@@ -30,9 +30,9 @@ const Home = () => {
       }
     };
 
-        useEffect(() => {
-            getCountryData()
-        }, []);
+    useEffect(() => {
+        getCountryData()
+    }, []);
 
     // create a function that searches through the cards
     const handleSearch = () => {
@@ -48,7 +48,8 @@ const Home = () => {
 
   const cardData = filteredCountries.map(country => (
     <Card
-      key={country.cca3} 
+      key={country.cca3}
+      id={country.cca3} 
       flag={country.flags.png}
       name={country.name.common}
       population={country.population}
