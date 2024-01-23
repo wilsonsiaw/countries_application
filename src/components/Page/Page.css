@@ -47,6 +47,7 @@
         width: 85px;
         font-size: 22px;
         font-weight: 800;
+        min-width: 300px;
     }
     
     .info,
@@ -64,6 +65,10 @@
 
     .info2 {
         margin-top: 40px;
+    }
+
+    .info2 .currency {
+        margin-left: 5px;
     }
 
     .border {
@@ -193,6 +198,10 @@
         margin-top: 40px;
     }
 
+    .info2 .currency {
+        margin-left: 5px;
+    }
+
     .border {
         margin: 40px 45px;
     }
@@ -313,6 +322,10 @@
         display: flex;
         gap: 140px;
         font-size: 18px;
+    }
+
+    .info2 .currency {
+        margin-left: 5px;
     }
 
     .border {
