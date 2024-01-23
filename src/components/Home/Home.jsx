@@ -34,15 +34,17 @@ const Home = () => {
         getCountryData()
     }, []);
 
+
     // create a function that searches through the cards
-    const handleSearch = () => {
-      if (searchCountry.trim() === '') {
+    const handleSearch = (countryName) => {
+      const trimmedSearch = countryName.trim();
+      if (trimmedSearch === '') {
         setFilteredCountries(data);
       } else {
         const filtered = data.filter((country) => 
-        country.name.common.toLowerCase().includes(searchCountry.toLowerCase())
+          country.name.common.toLowerCase().includes(trimmedSearch.toLowerCase())
         );
-        setFilteredCountries(filtered);
+        setFilteredCountries(filtered)
       }
     }
 
