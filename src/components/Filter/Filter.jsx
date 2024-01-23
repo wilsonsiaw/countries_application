@@ -2,12 +2,23 @@ import React, { useState } from 'react'
 import './Filter.css'
 import { useTheme } from '../context/ThemeContextProvider'
 
-const Filter = () => {
+const Filter = ( {onFilterChange} ) => {
 
   const {isDarkMode} = useTheme();
 
+  const [selectedRegion, setSelectedRegion] = useState("");
+
+  const handleChange = (e) => {
+    const selected = e.target.value;
+    setSelectedRegion(selected);
+    onFilterChange(selected);
+  }
+
   return (
-    <select className={`regions ${isDarkMode ? 'dark-mode' : 'light-mode'}`}>
+    <select className={`regions ${isDarkMode ? 'dark-mode' : 'light-mode'}`}
+      value={selectedRegion}
+      onChange={handleChange}
+    >
         <option value="">Filter by Region</option>
         <option value="africa">Africa</option>
         <option value="america">America</option>
