@@ -16,19 +16,34 @@ const Page = () => {
     const { id } = useParams()
 
     // The state for the API call
-    const [cardDetailData, setCardDetailData] = useState(null);
-    const [borderCountries, setBorderCountries] = useState([]);
+    const [countryCard, setCountryCard] = useState(null);
+    const [countryData, setCountryData] = useState([]);
     const [loading, setLoading] = useState(false)
 
     // A function that fetches the data for the detailed page
     useEffect(() => {
+        // check the id
         console.log(id)
         const getDetailedData = async () => {
             try {
-                const response = await axios.get(`https://restcountries.com/v3.1/alpha/${id}`)
-                setCardDetailData(response.data)
-                setBorderCountries(response.data?.[0]?.borders || []);
+                // fetch data from 2 endpoints concurrently
+                const [cardResponse, countryResponse] = await Promise.all([
+                    fetch(`https://restcountries.com/v3.1/alpha/${id}`),
+                    fetch('https://restcountries.com/v3.1/all'),
+                ])
+
+                // extract the JSON body content from the response
+                const [cardData, countryData] = await Promise.all([
+                    cardResponse.json(),
+                    countryResponse.json(),
+                ]);
+
+                // update the state with fetched data
+                setCountryCard(cardData);
+                setCountryData(countryData);
+
             } catch (error) {
+                // handle errors from the fetch operations
                 console.error("Error fetching data:", error)
             } 
         }
@@ -36,7 +51,13 @@ const Page = () => {
         getDetailedData();
     }, [id])
 
-    console.log(cardDetailData)
+    console.log(countryCard)
+
+    // The helper function that finds the abbreviation of the country
+    // using the country cca3 and sets it equal to the abbreviation
+    const findCountrybyAbbreviation = (abbreviation) => {
+        return countryData.find((country) => country?.cca3 === abbreviation)
+    }
     
     // The rendering logic for the component
     return (
@@ -50,7 +71,7 @@ const Page = () => {
                     </div>
                 </div>
             </Link>
-            {cardDetailData && cardDetailData.map(country => 
+            {countryCard && countryCard.map(country => 
             (
             <section className={`section2 ${isDarkMode ? 'dark-mode' : 'light-mode'}`} key={country?.cca3}>
                 <div className='flag'>
@@ -61,7 +82,7 @@ const Page = () => {
                     <div className="infoSection">
                         <div className='info'>
                             <h5>Native Name: <span>{country?.name?.common}</span></h5>
-                            <h5>Population: <span>{country?.population}</span></h5>
+                            <h5>Population: <span>{new Intl.NumberFormat().format(country?.population)}</span></h5>
                             <h5>Region: <span>{country?.region}</span></h5>
                             <h5>Sub Region: <span>{country?.subregion}</span></h5>
                             <h5>Capital: <span>{country?.capital}</span></h5>
@@ -85,24 +106,26 @@ const Page = () => {
                         {
                             country?.borders && country?.borders.length > 0 ? (
                                 <span>
-                                    {borderCountries.map((borderAbbreviation, index) => {
-                                        const matchingCountry = cardDetailData.find(
-                                            (countryData) => countryData?.cca3 === borderAbbreviation
-                                        );
+                                    {
+                                        // map over the country borders array if it is not empty
+                                        country.borders.map((borderAbbreviation, index) => {
 
-                                        console.log('Abbreviation:', borderAbbreviation);
-                                        console.log('Matching Country:', matchingCountry);
-
+                                            // use the helper function to check borde
+                                            const match = findCountrybyAbbreviation(borderAbbreviation)
+                                        
+                                        // render the button
                                         return (
                                             <Link key={index} to={`/card/${borderAbbreviation}`} className={`link ${isDarkMode ? 'dark-mode' : 'light-mode'}`}>
-                                                <button className='borderBtn'>{matchingCountry?.name.common || borderAbbreviation}</button>
+                                                <button className='borderBtn'>{match?.name?.common || borderAbbreviation}</button>
                                             </Link>
-                                        ) 
-                            })}
+                                        )
+                                        })
+                                    }
                                 </span>
                             ) : (
-                                    <p>No bordering countries</p>
-                        )}
+                                <p>No border countries</p>
+                            )
+                        }
                     </div>
                 </div>
             </section>
