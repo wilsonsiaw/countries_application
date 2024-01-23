@@ -40,7 +40,7 @@ const Page = () => {
     return (
         <main className={`pageBody ${isDarkMode ? 'dark-mode' : 'light-mode'}`}>
             <Header handleTheme={toggleTheme}/>
-            <Link to="/">
+            <Link to="/" className='link'>
                 <div className={`back ${isDarkMode ? 'dark-mode' : 'light-mode'}`}>
                     <div className={`backContent ${isDarkMode ? 'dark-mode' : 'light-mode'}`}>
                         <FaArrowLeftLong className={`backArrow ${isDarkMode} ? dark-mode : light-mode`}/>
@@ -84,8 +84,8 @@ const Page = () => {
                                         console.log('Matching Country:', matchingCountry);
 
                                         return (
-                                            <Link key={index} to={`/card/${borderAbbreviation}`}>
-                                                <span>{matchingCountry?.name.common || borderAbbreviation}</span>
+                                            <Link key={index} to={`/card/${borderAbbreviation}`} className={`link ${isDarkMode ? 'dark-mode' : 'light-mode'}`}>
+                                                <button className='borderBtn'>{matchingCountry?.name.common || borderAbbreviation}</button>
                                             </Link>
                                         ) 
                             })}
