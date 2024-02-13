@@ -1,9 +1,11 @@
-# React + Vite
+# Countries Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![home_image](public/countries_home.png)
 
-Currently, two official plugins are available:
+## Introduction
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-#countries_application
+In this project I used the [countries API](https://restcountries.com) to build an application that fetches the data of over 200 countries and renders it to the screen. 
+This project was part of my training in the Azubi Africa Frontend Development program.
+
+The full project can be seen at [this](https://countries-application-one.vercel.app/) link.
+
