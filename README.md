@@ -23,9 +23,7 @@ The full project can be seen at [this](https://countries-application-one.vercel.
 
 ![dark_mode](public/home_dark_mode.png)
 
-2. The application has a search bar that allows users to search for a specific country. Once the user has found a country they can click on the country card to get a more detailed view of the specific country. 
-
-Each detailed page has a list of border countries that the user can click on.
+2. The application has a search bar that allows users to search for a specific country. Once the user has found a country they can click on the country card to get a more detailed view of the specific country. Each detailed page has a list of border countries that the user can click on.
 
 ![countries_search](public/countries_search.png)
 
